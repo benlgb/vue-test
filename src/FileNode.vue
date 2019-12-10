@@ -1,21 +1,18 @@
 <template>
-  <keep-alive>
-    <div class="file-node" :id="data.id">
-      <img class="node-icon" 
-        :class="{'node-tree': isTree,
-          'show-next': isTree&&showNext}" 
-        :src="icon.source" 
-        :alt="icon.title" 
-        @click="toggleChildren"/>
-      <span class="node-title" 
-        :class="{'node-tree': isTree}"
-        v-text="data.title" 
-        @click="toggleChildren"></span>
-      <div class="next-node" v-if="isTree && showNext">
-        <file-node v-for="n in data.next" :data="n" :key="n.id"></file-node>
-      </div>
+  <div class="file-node" :id="data.id">
+    <img class="node-icon" 
+      :class="{'node-tree': isTree, 'show-next': isTree && showNext}" 
+      :src="icon.source" 
+      :alt="icon.title" 
+      @click="toggleChildren"/>
+    <span class="node-title" 
+      :class="{'node-tree': isTree}"
+      v-text="data.title" 
+      @click="toggleChildren"></span>
+    <div class="next-node" v-if="isTree && showNext">
+      <file-node v-for="n in data.next" :data="n" :key="n.id"></file-node>
     </div>
-  </keep-alive>
+  </div>
 </template>
 
 <script>
